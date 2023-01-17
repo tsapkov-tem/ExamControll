@@ -39,7 +39,7 @@ public class EntryPoint {
         notification.setId(idCam);
         notification.setInfo("На камере " + idCam + " замечены странные действия");
         System.out.println(notification.getInfo());
-        //notifications.add(notification);
+        notifications.add(notification);
         return notification;
     }
 }
