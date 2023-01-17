@@ -7,15 +7,13 @@ import py4j.GatewayServer;
 @Service
 public class EntryPointService {
     private final PhotoService photoService;
-    private final CameraService cameraService;
 
 
     @Autowired
-    public EntryPointService(PhotoService photoService, CameraService cameraService){
-        this.cameraService = cameraService;
-        GatewayServer gatewayServer = new GatewayServer(new EntryPoint ());
+    public EntryPointService(PhotoService photoService){
+        this.photoService = photoService;
+        GatewayServer gatewayServer = new GatewayServer(new EntryPoint (this.photoService));
         gatewayServer.start();
         System.out.println("Gateway Server Started");
-        this.photoService = photoService;
     }
 }

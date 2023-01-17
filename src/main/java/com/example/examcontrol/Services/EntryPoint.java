@@ -1,22 +1,24 @@
 package com.example.examcontrol.Services;
 
-import com.example.examcontrol.Models.Camera;
 import com.example.examcontrol.Models.Notification;
 import com.example.examcontrol.Models.Photo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.LinkedList;
 
+@Service
 public class EntryPoint {
 
+    public static LinkedList<Notification> notifications = new LinkedList<>();
+    private final PhotoService photoService;
+
     @Autowired
-    private PhotoService photoService;
-    private CameraService cameraService;
-    private SimpMessageSendingOperations sendingOperations;
-    @MessageMapping("/topic/public")
-    public void phoneDetected(String idCam, String time, String path){
+    public EntryPoint(PhotoService photoService) {
+        this.photoService = photoService;
+    }
+
+    public Notification phoneDetected(String idCam, String time, String path){
         Photo photo = Photo.builder ()
                 .idScreen (idCam + time).
                 idCam (idCam).
@@ -27,16 +29,17 @@ public class EntryPoint {
         Notification notification = new Notification();
         notification.setId(idCam);
         notification.setInfo("На камере " + idCam + " замечен телефон");
-        sendingOperations.convertAndSend("/topic/public", notification);
+        notifications.add(notification);
+        System.out.println("phone");
+        return notification;
     }
 
-    @MessageMapping("/topic/public")
-    public void moveDetected(String idCam){
-        Optional<Camera> camera = cameraService.getById (idCam);
-        System.out.println(camera.get().getCity());
+    public Notification moveDetected(String idCam){
         Notification notification = new Notification();
         notification.setId(idCam);
         notification.setInfo("На камере " + idCam + " замечены странные действия");
-        sendingOperations.convertAndSend("/topic/public", notification);
+        System.out.println(notification.getInfo());
+        //notifications.add(notification);
+        return notification;
     }
 }

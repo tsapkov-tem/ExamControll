@@ -1,13 +1,8 @@
 "use strict";
 
-let stompClient;
-let username;
-let separate;
-let isLoadMessage;
-
 const onCamera = () => {
   if (navigator.webkitGetUserMedia != null) {
-    var options = {
+    let options = {
       video: true,
     };
 
@@ -16,43 +11,40 @@ const onCamera = () => {
       options,
       function (stream) {
         // Получаем тег video
-        var video = document.getElementById("video-player");
+        let video = document.getElementById("video-player");
         // Включаем поток в тег video
         video.srcObject = stream;
       },
-      function (e) {
+      function () {
         console.log("произошла ошибка");
       }
     );
   }
 };
 
-const connect = (event) => {
-  onCamera();
-  const socket = new SockJS("/ws");
-  stompClient = Stomp.over(socket);
-  stompClient.connect({}, online);
-  separate = 0;
-  event.preventDefault();
-
-  document.querySelector("#chp").onclick = () => {};
-};
-
 const online = () => {
-  stompClient.subscribe("/topic/public", onMessageReceived);
-};
-
-const onMessageReceived = (payload) => {
-  const message = JSON.parse(payload.body);
-
+  $(document).ready(function () {
+    $('#search-btn').click(function () {
+      $.ajax({
+        url: '/request',
+        type: 'get',
+        dataType: 'html',
+        success : function(data) {
+          onMessageReceived(data);
+        },
+      });
+    });
+  });
+}
+const onMessageReceived = (info) => {
   let chip = document.createElement("div");
   chip.classList.add("chips__chip");
   chip.innerHTML =
-    "<label class=" + "chips__info" + ">" + message.info + "</label>";
+    "<label class=" + "chips__info" + ">" + info + "</label>";
   document.querySelector("#chips").appendChild(chip);
   setTimeout(() => {
     chip.remove();
   }, 3000);
 };
 
-document.addEventListener("DOMContentLoaded", connect);
+document.addEventListener("DOMContentLoaded", online);
