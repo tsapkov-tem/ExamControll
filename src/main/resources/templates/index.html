@@ -1,10 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>ГИА контроль</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="../static/script.js"></script>
 
-</body>
+    <link rel="stylesheet" href="../static/css/all.css" />
+    <link rel="stylesheet" href="../static/css/header/header.css" />
+    <link rel="stylesheet" href="../static/css/main/main.css" />
+    <link rel="stylesheet" href="../static/css/pageable/pageable.css" />
+    <link rel="stylesheet" href="../static/css/chips.css" />
+
+    <title>ГИА Контроль</title>
+  <body>
+    <header class="header">
+      <h2 class="header__logo">ГИА КОНТРОЛЬ</h2>
+      <div class="header__nav">
+        <button class="header__nav-button">Наблюдение</button>
+        <button class="header__nav-button">Информация о нарушениях</button>
+        <button class="header__nav-button">Сообщить о нарушении</button>
+      </div>
+      <div class="header__authorization">
+        <button class="header__authorization-button">Вход</button>
+      </div>
+    </header>
+    <div class="pageable">
+        <div class="pageable__serach">
+            <button class="pageable__serach-button">Поиск по</button>
+            <input class="pageable__serach-input" placeholder="Город" />
+            <input class="pageable__serach-input" placeholder="Школа" />
+            <input class="pageable__serach-input" placeholder="Аудитория" />
+          </div>
+          <div class="pageable__buttons">
+            <button class="pageable__buttons-button"></button>
+            <button class="pageable__buttons-button"></button>
+            <button class="pageable__buttons-button"></button>
+          </div>
+    </div>
+    <main class="main">
+      <div class="main__content">
+        <video class="main__content-video" autoplay id="video-player">
+          Video
+        </video>
+        <label class="main__content-info"
+          >Город такой то, Школа такая то, аудитория 54</label
+        >
+      </div>
+      <div class="main__content">
+        <video class="main__content-video" autoplay id="video-player">
+          Video
+        </video>
+        <label class="main__content-info"
+          >Город такой то, Школа такая то, аудитория 54</label
+        >
+      </div>
+      <div class="main__content">
+        <video class="main__content-video" autoplay id="video-player">
+          Video
+        </video>
+        <label class="main__content-info"
+          >Город такой то, Школа такая то, аудитория 54</label
+        >
+      </div>
+    </main>
+    <div class="chips" id="chips"></div>
+  </body>
 </html>

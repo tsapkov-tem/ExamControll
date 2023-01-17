@@ -1,0 +1,55 @@
+.header {
+  background-color: #d9d9d9;
+  display: grid;
+  grid-template-columns: 180px 7fr 1fr;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  justify-items: center;
+  align-items: center;
+}
+
+.header__logo {
+  color: rgb(111, 77, 204);
+  font-family: "Roboto", sans-serif;
+  font-size: large;
+}
+
+.header__nav {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1.5fr;
+  justify-items: center;
+}
+
+.header__nav-button {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  background-color: rgb(111, 77, 204);
+  height: 2em;
+  width: fit-content;
+  border: none;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 20px;
+}
+
+.header__nav-button:hover {
+  color: rgb(111, 77, 204);
+  background-color: white;
+}
+
+.header__authorization-button {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  background-color: rgb(111, 77, 204);
+  height: 2em;
+  width: fit-content;
+  border: none;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 20px;
+}
+
+.header__authorization-button:hover {
+  color: rgb(111, 77, 204);
+  background-color: white;
+}
