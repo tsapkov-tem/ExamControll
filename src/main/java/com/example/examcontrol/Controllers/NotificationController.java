@@ -20,9 +20,9 @@ public class NotificationController {
     @GetMapping("/request")
     public String request(){
         System.out.println("Get");
-        if(entryPoint.notifications.poll().getInfo()!=null)
+        if(!entryPoint.notifications.isEmpty())
         return entryPoint.notifications.poll().getInfo();
-        return "";
+        return "Нет замечаний";
     }
 
 }
