@@ -20,12 +20,12 @@
     <header class="header">
       <h2 class="header__logo">ГИА КОНТРОЛЬ</h2>
       <div class="header__nav">
-        <button class="header__nav-button">Наблюдение</button>
-        <button class="header__nav-button">Информация о нарушениях</button>
+        <button class="header__nav-button"  th:onclick="|window.location.href='/observation'|">Наблюдение</button>
+        <button class="header__nav-button" th:onclick="|window.location.href='/violations'|">Информация о нарушениях</button>
         <button class="header__nav-button">Сообщить о нарушении</button>
       </div>
       <div class="header__authorization">
-        <button class="header__authorization-button">Вход</button>
+        <button class="header__authorization-button" th:onclick="|window.location.href='/logout'|">Вход</button>
       </div>
     </header>
     <div class="pageable">
@@ -43,25 +43,19 @@
     </div>
     <main class="main">
       <div class="main__content">
-        <video class="main__content-video" autoplay id="video-player">
-          Video
-        </video>
+        <img class="main__content-img" alt="фото с камеры">
         <label class="main__content-info"
           >Город такой то, Школа такая то, аудитория 54</label
         >
       </div>
       <div class="main__content">
-        <video class="main__content-video" autoplay id="video-player1">
-          Video
-        </video>
+        <img class="main__content-img" alt="фото с камеры">
         <label class="main__content-info"
           >Город такой то, Школа такая то, аудитория 54</label
         >
       </div>
       <div class="main__content">
-        <video class="main__content-video" autoplay id="video-player2">
-          Video
-        </video>
+        <img class="main__content-img" alt="фото с камеры">
         <label class="main__content-info"
           >Город такой то, Школа такая то, аудитория 54</label
         >

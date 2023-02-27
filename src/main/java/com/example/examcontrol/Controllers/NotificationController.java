@@ -25,4 +25,8 @@ public class NotificationController {
         return "Нет замечаний";
     }
 
+    @GetMapping("/accessDenied")
+    public String denied(){
+        return "У вас нет доступа";
+    }
 }
