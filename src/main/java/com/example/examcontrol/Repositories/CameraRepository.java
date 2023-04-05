@@ -14,5 +14,5 @@ public interface CameraRepository extends MongoRepository<Camera, String> {
     List<Camera> findAll();
     List<Camera> findAllByCity(String city);
     List<Camera> findAllBySchool(String School);
-    List<Camera> findAllByAuditorium(int auditorium);
+    List<Camera> findAllByAuditorium(String auditorium);
 }

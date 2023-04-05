@@ -22,19 +22,19 @@
       <div class="header__nav">
         <button class="header__nav-button"  th:onclick="|window.location.href='/observation'|">Наблюдение</button>
         <button class="header__nav-button" th:onclick="|window.location.href='/violations'|">Информация о нарушениях</button>
-        <button class="header__nav-button">Сообщить о нарушении</button>
+        <button class="header__nav-button" th:onclick="|window.location.href='/report'|">Сообщить о нарушении</button>
       </div>
       <div class="header__authorization">
         <button class="header__authorization-button" th:onclick="|window.location.href='/logout'|">Вход</button>
       </div>
     </header>
     <div class="pageable">
-        <div class="pageable__serach">
-            <button class="pageable__serach-button" id="search-btn" name="search-btn">Поиск по</button>
-            <input class="pageable__serach-input" placeholder="Город" />
-            <input class="pageable__serach-input" placeholder="Школа" />
-            <input class="pageable__serach-input" placeholder="Аудитория" />
-          </div>
+      <form class="pageable__serach" th:action="@{/violations/search}" th:object="${violation}" method="post">
+        <button class="pageable__serach-button" id="search-btn" name="search-btn" type="submit">Поиск по</button>
+        <input class="pageable__serach-input" placeholder="Город" th:field="*{city}"/>
+        <input class="pageable__serach-input" placeholder="Школа" th:field="*{school}"/>
+        <input class="pageable__serach-input" placeholder="Аудитория" th:field="*{auditorium}"/>
+      </form>
           <div class="pageable__buttons">
             <button class="pageable__buttons-button"></button>
             <button class="pageable__buttons-button"></button>
@@ -42,26 +42,20 @@
           </div>
     </div>
     <main class="main">
+      <tr th:each="vio : ${vios}">
       <div class="main__content">
-        <img class="main__content-img" alt="фото с камеры">
-        <label class="main__content-info"
-          >Город такой то, Школа такая то, аудитория 54</label
-        >
+        <label class="main__content-info">Город:  </label>
+        <label class="main__content-info" th:text="${vio.city}">_</label>
+        <label class="main__content-info">Школа номер:  </label>
+        <label class="main__content-info" th:text="${vio.school}">_</label>
+        <label class="main__content-info">Аудитория номер:  </label>
+        <label class="main__content-info" th:text="${vio.auditorium}">_</label>
+        <label class="main__content-info">Камера:  </label>
+        <label class="main__content-info" th:text="${vio.numberCamera}">_</label>
+        <label class="main__content-info">Информация:  </label>
+        <label class="main__content-info" th:text="${vio.info}">_</label>
       </div>
-      <div class="main__content">
-        <img class="main__content-img" alt="фото с камеры">
-        <label class="main__content-info"
-          >Город такой то, Школа такая то, аудитория 54</label
-        >
-      </div>
-      <div class="main__content">
-        <img class="main__content-img" alt="фото с камеры">
-        <label class="main__content-info"
-          >Город такой то, Школа такая то, аудитория 54</label
-        >
-      </div>
+      </tr>
     </main>
-    <div class="chips" id="chips"></div>
-
   </body>
 </html>

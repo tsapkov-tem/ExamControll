@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ГИА Контроль</title>
+  </head>
+
+  <link rel="stylesheet" href="/css/all.css" />
+  <link rel="stylesheet" href="/css/header/header.css" />
+  <link rel="stylesheet" href="/css/main/report.css" />
+
+  <body>
+    <header class="header">
+      <h2 class="header__logo">ГИА КОНТРОЛЬ</h2>
+      <div class="header__nav">
+        <button
+          class="header__nav-button"
+          th:onclick="|window.location.href='/observation'|"
+        >
+          Наблюдение
+        </button>
+        <button
+          class="header__nav-button"
+          th:onclick="|window.location.href='/violations'|"
+        >
+          Информация о нарушениях
+        </button>
+        <button class="header__nav-button" th:onclick="|window.location.href='/report'|">Сообщить о нарушении</button>
+      </div>
+      <div class="header__authorization">
+        <button
+          class="header__authorization-button"
+          th:onclick="|window.location.href='/logout'|"
+        >
+          Вход
+        </button>
+      </div>
+    </header>
+    <form class="main" th:action="@{/report}" th:object="${report}" method="post">
+      <h2 class="main__header">Заполните данные по нарушению</h2>
+      <div class="main__input-box">
+        <label class="main__input-box__label">Город: </label>
+        <input class="main__input-box__input" placeholder="Город" th:field="*{city}"/>
+      </div>
+      <div class="main__input-box">
+        <label class="main__input-box__label">Номер школы: </label>
+        <input class="main__input-box__input" placeholder="Номер школы" th:field="*{school}"/>
+      </div>
+      <div class="main__input-box">
+        <label class="main__input-box__label
+          >Номер аудитории:
+        </label>
+        <input class="main__input-box__input" placeholder="Номер аудитории" th:field="*{auditorium}"/>
+      </div>
+      <div class="main__input-box">
+        <label class="main__input-box__label">Номер камеры: </label>
+        <input class="main__input-box__input" placeholder="Номер камеры" th:field="*{numberCamera}"/>
+      </div>
+      <div class="main__input-box">
+        <label class="main__input-box__label"
+          >Информация о нарушении:
+        </label>
+        <input
+          class="main__input-box__input"
+          placeholder="Напишите сведения о нарушении"
+          th:field="*{info}"
+        />
+      </div>
+      <button class="main__button" type="submit">
+        Оправить информацию о нарушении
+      </button>
+    </form>
+  </body>
+</html>

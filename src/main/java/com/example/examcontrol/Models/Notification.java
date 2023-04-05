@@ -6,4 +6,5 @@ import lombok.Data;
 public class Notification {
     String id;
     String info;
+    Boolean viewed;
 }

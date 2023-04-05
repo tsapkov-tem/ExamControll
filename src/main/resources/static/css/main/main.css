@@ -30,3 +30,18 @@
   font-family: "Roboto", sans-serif;
   font-size: large;
 }
+
+.get__chips{
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  background-color: rgb(111, 77, 204);
+  height: 2em;
+  width: fit-content;
+  border: none;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 20px;
+}

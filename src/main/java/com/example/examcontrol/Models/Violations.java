@@ -4,11 +4,13 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 @Data
-public class Camera {
+public class Violations {
     @Id
-    private String idCam;
+    private String idViolations;
     private String city;
     private String school;
     private String auditorium;
     private String numberCamera;
+    private String info;
 }
+

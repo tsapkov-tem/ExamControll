@@ -22,19 +22,19 @@
       <div class="header__nav">
         <button class="header__nav-button"  th:onclick="|window.location.href='/observation'|">Наблюдение</button>
         <button class="header__nav-button" th:onclick="|window.location.href='/violations'|">Информация о нарушениях</button>
-        <button class="header__nav-button">Сообщить о нарушении</button>
+        <button class="header__nav-button" th:onclick="|window.location.href='/report'|">Сообщить о нарушении</button>
       </div>
       <div class="header__authorization">
         <button class="header__authorization-button" th:onclick="|window.location.href='/logout'|">Вход</button>
       </div>
     </header>
     <div class="pageable">
-        <div class="pageable__serach">
-            <button class="pageable__serach-button" id="search-btn" name="search-btn">Поиск по</button>
-            <input class="pageable__serach-input" placeholder="Город" />
-            <input class="pageable__serach-input" placeholder="Школа" />
-            <input class="pageable__serach-input" placeholder="Аудитория" />
-          </div>
+        <form class="pageable__serach" th:action="@{/observation/search}" th:object="${camera}" method="post">
+            <button class="pageable__serach-button" id="search-btn" name="search-btn" type="submit">Поиск по</button>
+            <input class="pageable__serach-input" placeholder="Город" th:field="*{city}"/>
+            <input class="pageable__serach-input" placeholder="Школа" th:field="*{school}"/>
+            <input class="pageable__serach-input" placeholder="Аудитория" th:field="*{auditorium}"/>
+          </form>
           <div class="pageable__buttons">
             <button class="pageable__buttons-button"></button>
             <button class="pageable__buttons-button"></button>
@@ -42,32 +42,23 @@
           </div>
     </div>
     <main class="main">
-      <div class="main__content">
-        <video class="main__content-video" autoplay id="video-player">
+      <tr th:each="cam : ${cams}">
+      <div class="main__content" id="main">
+        <video class="main__content-video" autoplay th:id="${cam.idCam}">
           Video
         </video>
-        <label class="main__content-info"
-          >Город такой то, Школа такая то, аудитория 54</label
-        >
+        <label class="main__content-info">Город:  </label>
+        <label class="main__content-info" th:text="${cam.city}">_</label>
+        <label class="main__content-info">Школа номер:  </label>
+        <label class="main__content-info" th:text="${cam.school}">_</label>
+        <label class="main__content-info">Аудитория номер:  </label>
+        <label class="main__content-info" th:text="${cam.auditorium}">_</label>
+        <label class="main__content-info">Камера:  </label>
+        <label class="main__content-info" th:text="${cam.numberCamera}">_</label>
       </div>
-      <div class="main__content">
-        <video class="main__content-video" autoplay id="video-player1">
-          Video
-        </video>
-        <label class="main__content-info"
-          >Город такой то, Школа такая то, аудитория 54</label
-        >
-      </div>
-      <div class="main__content">
-        <video class="main__content-video" autoplay id="video-player2">
-          Video
-        </video>
-        <label class="main__content-info"
-          >Город такой то, Школа такая то, аудитория 54</label
-        >
-      </div>
+      </tr>
     </main>
     <div class="chips" id="chips"></div>
-
+    <button class="get__chips" id="get__сhips" name="get__сhips" type="submit">Информация о возможных нарушениях</button>
   </body>
 </html>

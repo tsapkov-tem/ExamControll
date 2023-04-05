@@ -27,6 +27,10 @@ public class CameraService {
         cameraRepository.deleteById (id);
     }
 
+    public List<Camera> getAll(){
+        return cameraRepository.findAll();
+    }
+
     public Optional<Camera> getById(String id){
         return cameraRepository.findById (id);
     }
@@ -39,7 +43,7 @@ public class CameraService {
         return cameraRepository.findAllBySchool (school);
     }
 
-    public List<Camera> getByAuditorium(int auditorium){
+    public List<Camera> getByAuditorium(String auditorium){
         return cameraRepository.findAllByAuditorium (auditorium) ;
     }
 }
