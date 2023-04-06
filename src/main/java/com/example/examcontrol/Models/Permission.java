@@ -1,5 +1,6 @@
 package com.example.examcontrol.Models;
 
+//Разрешение к доступу
 public enum Permission {
     READ("read"),
     All("all");

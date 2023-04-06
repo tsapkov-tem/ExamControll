@@ -2,6 +2,7 @@ package com.example.examcontrol.Models;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+//Сущность пользователя
 @Data
 public class Users {
     @Id

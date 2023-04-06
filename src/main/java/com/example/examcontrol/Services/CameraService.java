@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+//Сервис для работы с камерами
 @Service
 public class CameraService {
 

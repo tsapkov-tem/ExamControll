@@ -2,7 +2,7 @@ package com.example.examcontrol.Models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-
+//Сущность нарушения
 @Data
 public class Violations {
     @Id

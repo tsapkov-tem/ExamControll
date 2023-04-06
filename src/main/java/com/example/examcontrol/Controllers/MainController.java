@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+/*
+Основной контроллер, обеспечивающий работу на стороне клиента, выдает нужные шаблоны страниц, принимает, выдает
+и обрабатывает данные от клиента и от базы данных
+*/
 @Controller
 public class MainController {
     private final CameraService cameraService;
@@ -23,13 +27,16 @@ public class MainController {
         this.violationsService = violationsService;
     }
 
+
+    //Выдает шаблон страницы, где пользователь может оставить отчет о замеченном нарушении
     @GetMapping("/report")
-    @PreAuthorize("hasAnyAuthority('all', 'read')")
+    @PreAuthorize("hasAnyAuthority('all', 'read')") //Модификаторы доступа от Security, all-админы, read- обычные пользователи
     public String report(Model model){
         model.addAttribute("report", new Violations());
         return "report";
     }
 
+    //Принимает отчет от пользователя о нарушении и сохраняет его в базу данных
     @PostMapping("/report")
     @PreAuthorize("hasAnyAuthority('all', 'read')")
     public String reportSave(Model model, Violations violation){
@@ -38,6 +45,8 @@ public class MainController {
         return "report";
     }
 
+
+    //Выдает страницу с видеокамерами для наблюдения
     @GetMapping("/observation")
     @PreAuthorize("hasAnyAuthority('all', 'read')")
     public String observation(Model model){
@@ -47,6 +56,7 @@ public class MainController {
         return "observation";
     }
 
+    //Выдвает страницу с камерами по заданным параметрам
     @PostMapping ("/observation/search")
     @PreAuthorize("hasAnyAuthority('all', 'read')")
     public String observationSearch(Model model, Camera camera){
@@ -65,6 +75,7 @@ public class MainController {
         return "observation";
     }
 
+    //Выдает страницу с нарушениями
     @GetMapping("/violations")
     @PreAuthorize("hasAuthority('all')")
     public String violations(Model model){
@@ -74,6 +85,7 @@ public class MainController {
         return "violations";
     }
 
+    //Выдает страницу с нарушениями по заданным параметрам
     @PostMapping ("/violations/search")
     @PreAuthorize("hasAuthority('all')")
     public String violationsSearch(Model model, Violations violations){

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+//Сервис работы с нарушениями
 @Service
 public class ViolationsService {
 

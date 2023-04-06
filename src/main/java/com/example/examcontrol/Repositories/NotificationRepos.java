@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface NotificationRepos extends CrudRepository<Notification, String> {
-    List<Notification> findAllNotificationByViewedAndIdIn(Boolean viewed,List<String> ids);
+    List<Notification> findAllNotificationByViewedAndIdCamIn(Boolean viewed,List<String> ids);
 }

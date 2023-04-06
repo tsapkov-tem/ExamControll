@@ -3,6 +3,7 @@ package com.example.examcontrol.Models;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+//Сущность камеры
 @Data
 public class Camera {
     @Id

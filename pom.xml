@@ -17,31 +17,31 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
+<!--        Веб утилита спринга-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+<!--        Для работы с шаблонами-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
+<!--            Спринг утилита секьюрити-->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
+<!--            Позволяет открыть порт между python и java-->
             <groupId>net.sf.py4j</groupId>
             <artifactId>py4j</artifactId>
             <version>0.10.9.7</version>
         </dependency>
         <dependency>
+            <!--          Спринг утилита для работы с бд -->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,6 +50,7 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+<!--            Ломбок служит для облегченной работы с сущностями-->
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>

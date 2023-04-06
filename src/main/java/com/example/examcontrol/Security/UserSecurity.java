@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+
+//Впомогательный класс для работы с Security
 @Data
 public class UserSecurity implements UserDetails {
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+//Сервис работы с базой данных. Позволяет использовать данные для авторизации пользователей из бд
 @Service("userDetailsServiceImpl")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -20,6 +21,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.usersRepository = usersRepository;
     }
 
+
+    //Получаем пользователя по логину и сверяем пароль
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Users> usersOptional = Optional.ofNullable ((usersRepository.findByUsername (username)));
